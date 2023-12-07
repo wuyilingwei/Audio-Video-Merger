@@ -14,4 +14,4 @@ Download RunME.bat, put the m4a files and the mp4 files together(need same name)
 
 下载RunME.bat，将所有m4a文件和mp4文件放在一起（必需名称相同），然后运行即可
 
-因为bat不好写多语言支持加上Github会改编码，加上所有单词基本是IELTS 4以内的水平，故不作中文翻译。
+因为bat不好写多语言支持加上Github会改编码，加上所有单词基本是IELTS 4 ~（又考疯一个）~ 以内的水平，故不作中文翻译。
