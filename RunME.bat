@@ -176,8 +176,8 @@ for %%i in ("%input_folder%\*.mp4") do (
             echo [ERROR] The file !file_name!.mp4 already exists in output folder, please check the file name >> error.log
         )
     ) else (
-        echo [ERROR] No m4a file matching %%i.mp4 was found, please check the file name
-        echo [ERROR] No m4a file matching %%i.mp4 was found, please check the file name >> error.log
+        echo [ERROR] No m4a file matching %%i was found, please check the file name
+        echo [ERROR] No m4a file matching %%i was found, please check the file name >> error.log
     )
 )
 
