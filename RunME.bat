@@ -32,7 +32,7 @@ rmdir %temp_folder% /s /q >nul 2>nul
 echo.
 echo [INFO] Welcome to use the batch script to merge mp4 and m4a files
 echo [INFO] Author: @yige-yigeren
-echo [INFO] Script version: 1.0
+echo [INFO] Script version: 1.0.1
 echo.
 if not exist ffmpeg.exe (
     set extracted_text=Not Available
