@@ -32,7 +32,7 @@ rmdir %temp_folder% /s /q >nul 2>nul
 echo.
 echo [INFO] Welcome to use the batch script to merge mp4 and m4a files
 echo [INFO] Author: @yige-yigeren
-echo [INFO] Script version: 1.0
+echo [INFO] Script version: 1.1
 echo.
 if not exist ffmpeg.exe (
     set extracted_text=Not Available
@@ -158,8 +158,8 @@ for %%i in ("%input_folder%\*.mp4") do (
             )
             
             echo [INFO] !file_name! merge completed
-            echo [INFO] Size: !mp4_size! bytes, Output filename: !file_name!.mp4, Output size: !output_size! bytes
-            echo [INFO] Size: !mp4_size! bytes, Output filename: !file_name!.mp4, Output size: !output_size! bytes >> log.log
+            echo [INFO] Output filename: !file_name!.mp4, Size: !total_size!^-^>!output_size! bytes
+            echo [INFO] MP4 Size: !mp4_size! bytes, M4A Size: !m4a_size! bytes, Output filename: !file_name!.mp4, Size: !total_size!^-^>!output_size! bytes >> log.log
             echo.
             
             if "!save_source!"=="1" (
@@ -189,7 +189,7 @@ title Task completed ^| Audio and Video Merger by @yige-yigeren
 color AF
 echo.
 echo [INFO] All files have been processed, total: !num! files, Succeeded: !snum! files
-powershell -Command "& { [Windows.UI.Notifications.ToastNotificationManager, Windows.UI.Notifications, ContentType = WindowsRuntime] > $null; $template = [Windows.UI.Notifications.ToastNotificationManager]::GetTemplateContent([Windows.UI.Notifications.ToastTemplateType]::ToastText02); $xml = New-Object Windows.Data.Xml.Dom.XmlDocument; $xml.LoadXml($template.GetXml()); $toastElements = $xml.GetElementsByTagName('text'); if ($toastElements.Count -ge 2) { $titleNode = $xml.CreateTextNode('All files have been processed'); $toastElements.Item(0).AppendChild($titleNode) > $null; $contentNode = $xml.CreateTextNode('Total: !num! files, Succeeded: !snum! files'); $toastElements.Item(1).AppendChild($contentNode) > $null; $toast = [Windows.UI.Notifications.ToastNotification]::new($xml); $notifier = [Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier('Audio and Video Merger by @yige-yigeren'); $notifier.Show($toast); } else { Write-Host 'Unable to create toast notification.' } }"
+powershell -Command "& { [Windows.UI.Notifications.ToastNotificationManager, Windows.UI.Notifications, ContentType = WindowsRuntime] > $null; $template = [Windows.UI.Notifications.ToastNotificationManager]::GetTemplateContent([Windows.UI.Notifications.ToastTemplateType]::ToastText02); $xml = New-Object Windows.Data.Xml.Dom.XmlDocument; $xml.LoadXml($template.GetXml()); $toastElements = $xml.GetElementsByTagName('text'); if ($toastElements.Count -ge 2) { $titleNode = $xml.CreateTextNode('All files have been processed'); $toastElements.Item(0).AppendChild($titleNode) > $null; $contentNode = $xml.CreateTextNode('Total: !num! files, Succeeded: !snum! files'); $toastElements.Item(1).AppendChild($contentNode) > $null; $toast = [Windows.UI.Notifications.ToastNotification]::new($xml); $notifier = [Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier('Audio and Video Merger by @yige-yigeren'); $notifier.Show($toast); } else { Write-Host 'Unable to create toast notification.' } }"   >nul 2>nul
 echo [INFO] press any key to exit
 pause >nul
 
