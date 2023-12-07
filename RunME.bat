@@ -158,8 +158,8 @@ for %%i in ("%input_folder%\*.mp4") do (
             )
             
             echo [INFO] !file_name! merge completed
-            echo [INFO] Size: !mp4_size! bytes, Output filename: !file_name!.mp4, Output size: !output_size! bytes
-            echo [INFO] Size: !mp4_size! bytes, Output filename: !file_name!.mp4, Output size: !output_size! bytes >> log.log
+            echo [INFO] Output filename: !file_name!.mp4, Size: !total_size!^-^>!output_size! bytes
+            echo [INFO] MP4 Size: !mp4_size! bytes, M4A Size: !m4a_size! bytes, Output filename: !file_name!.mp4, Size: !total_size!^-^>!output_size! bytes >> log.log
             echo.
             
             if "!save_source!"=="1" (
