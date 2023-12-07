@@ -20,19 +20,19 @@ if exist processing.lock (
 rmdir %temp_folder% /s /q >nul 2>nul
 
 @rem   ___    ___ ___  ________  _______                  ___    ___ ___  ________  _______   ________  _______   ________      
-@rem  ^|\  \  /  /^|\  \^|\   ____\^|\  ___ \                ^|\  \  /  /^|\  \^|\   ____\^|\  ___ \ ^|\   __  \^|\  ___ \ ^|\   ___  \    
-@rem  \ \  \/  / ^| \  \ \  \___^|\ \   __/^|   ____________\ \  \/  / ^| \  \ \  \___^|\ \   __/^|\ \  \^|\  \ \   __/^|\ \  \\ \  \   
-@rem   \ \    / / \ \  \ \  \  __\ \  \_^|/__^|\____________\ \    / / \ \  \ \  \  __\ \  \_^|/_\ \   _  _\ \  \_^|/_\ \  \\ \  \  
-@rem    \/  /  /   \ \  \ \  \^|\  \ \  \_^|\ \^|____________^|\/  /  /   \ \  \ \  \^|\  \ \  \_^|\ \ \  \\  \\ \  \_^|\ \ \  \\ \  \ 
+@rem  |\  \  /  /|\  \|\   ____\|\  ___ \                |\  \  /  /|\  \|\   ____\|\  ___ \ |\   __  \|\  ___ \ |\   ___  \    
+@rem  \ \  \/  / | \  \ \  \___|\ \   __/|   ____________\ \  \/  / | \  \ \  \___|\ \   __/|\ \  \|\  \ \   __/|\ \  \\ \  \   
+@rem   \ \    / / \ \  \ \  \  __\ \  \_|/__|\____________\ \    / / \ \  \ \  \  __\ \  \_|/_\ \   _  _\ \  \_|/_\ \  \\ \  \  
+@rem    \/  /  /   \ \  \ \  \|\  \ \  \_|\ \|____________|\/  /  /   \ \  \ \  \|\  \ \  \_|\ \ \  \\  \\ \  \_|\ \ \  \\ \  \ 
 @rem  __/  / /      \ \__\ \_______\ \_______\           __/  / /      \ \__\ \_______\ \_______\ \__\\ _\\ \_______\ \__\\ \__\
-@rem ^|\___/ /        \^|__^|\^|_______^|\^|_______^|          ^|\___/ /        \^|__^|\^|_______^|\^|_______^|\^|__^|\^|__^|\^|_______^|\^|__^| \^|__^|
-@rem \^|___^|/                                            \^|___^|/                                                                 
+@rem |\___/ /        \|__|\|_______|\|_______|          |\___/ /        \|__|\|_______|\|_______|\|__|\|__|\|_______|\|__| \|__|
+@rem \|___|/                                            \|___|/                                                                 
 @rem github.com/yige-yigeren
 
 echo.
 echo [INFO] Welcome to use the batch script to merge mp4 and m4a files
 echo [INFO] Author: @yige-yigeren
-echo [INFO] Script version: 1.0.1
+echo [INFO] Script version: 1.0
 echo.
 if not exist ffmpeg.exe (
     set extracted_text=Not Available
@@ -51,12 +51,12 @@ echo [INFO] You can download or update ffmpeg version from ffmpeg.org/download.h
 echo [INFO] You also can just delete ffmpeg.exe and run this script again to try to download latest version
 echo.
 echo [NOTICE] Data no price, caution proceed
+echo.
 echo [*] Press any key to continue
 echo.
 pause >nul
 
 if not exist ffmpeg.exe (
-    echo.
     echo [INFO] Dependence ffmpeg.exe not found
     echo [INFO] Do you want to download ffmpeg.exe now?
     echo [*] Press any key to start download
@@ -158,8 +158,8 @@ for %%i in ("%input_folder%\*.mp4") do (
             )
             
             echo [INFO] !file_name! merge completed
-            echo [INFO] Output filename: !file_name!.mp4, Size: !total_size!^-^>!output_size! bytes
-            echo [INFO] MP4 Size: !mp4_size! bytes, M4A Size: !m4a_size! bytes, Output filename: !file_name!.mp4, Size: !total_size!^-^>!output_size! bytes >> log.log
+            echo [INFO] Size: !mp4_size! bytes, Output filename: !file_name!.mp4, Output size: !output_size! bytes
+            echo [INFO] Size: !mp4_size! bytes, Output filename: !file_name!.mp4, Output size: !output_size! bytes >> log.log
             echo.
             
             if "!save_source!"=="1" (
@@ -189,7 +189,7 @@ title Task completed ^| Audio and Video Merger by @yige-yigeren
 color AF
 echo.
 echo [INFO] All files have been processed, total: !num! files, Succeeded: !snum! files
-powershell -Command "& { [Windows.UI.Notifications.ToastNotificationManager, Windows.UI.Notifications, ContentType = WindowsRuntime] > $null; $template = [Windows.UI.Notifications.ToastNotificationManager]::GetTemplateContent([Windows.UI.Notifications.ToastTemplateType]::ToastText02); $xml = New-Object Windows.Data.Xml.Dom.XmlDocument; $xml.LoadXml($template.GetXml()); $toastElements = $xml.GetElementsByTagName('text'); if ($toastElements.Count -ge 2) { $titleNode = $xml.CreateTextNode('All files have been processed'); $toastElements.Item(0).AppendChild($titleNode) > $null; $contentNode = $xml.CreateTextNode('Total: !num! files, Succeeded: !snum! files'); $toastElements.Item(1).AppendChild($contentNode) > $null; $toast = [Windows.UI.Notifications.ToastNotification]::new($xml); $notifier = [Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier('Audio and Video Merger by @yige-yigeren'); $notifier.Show($toast); } else { Write-Host 'Unable to create toast notification.' } }"  >nul 2>nul
+powershell -Command "& { [Windows.UI.Notifications.ToastNotificationManager, Windows.UI.Notifications, ContentType = WindowsRuntime] > $null; $template = [Windows.UI.Notifications.ToastNotificationManager]::GetTemplateContent([Windows.UI.Notifications.ToastTemplateType]::ToastText02); $xml = New-Object Windows.Data.Xml.Dom.XmlDocument; $xml.LoadXml($template.GetXml()); $toastElements = $xml.GetElementsByTagName('text'); if ($toastElements.Count -ge 2) { $titleNode = $xml.CreateTextNode('All files have been processed'); $toastElements.Item(0).AppendChild($titleNode) > $null; $contentNode = $xml.CreateTextNode('Total: !num! files, Succeeded: !snum! files'); $toastElements.Item(1).AppendChild($contentNode) > $null; $toast = [Windows.UI.Notifications.ToastNotification]::new($xml); $notifier = [Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier('Audio and Video Merger by @yige-yigeren'); $notifier.Show($toast); } else { Write-Host 'Unable to create toast notification.' } }"
 echo [INFO] press any key to exit
 pause >nul
 
