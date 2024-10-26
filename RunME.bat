@@ -1,7 +1,7 @@
 @ECHO OFF
 setlocal enabledelayedexpansion
 
-title Audio and Video Merger by @yige-yigeren
+title Audio and Video Merger by @wuyilingwei
 
 set "input_folder=."
 set "temp_folder=temp"
